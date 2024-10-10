@@ -85,7 +85,7 @@ class SoCCore(Module):
         self.add_wb_master(self.cpu.dbus)
 
         self.cpu_dw = len(self.cpu.dbus.dat_w)
-        assert(self.cpu_dw, cpu_bus_width)
+        assert self.cpu_dw == cpu_bus_width
         self.config["DATA_WIDTH_BYTES"] = self.cpu_dw//8
 
         self.csr_data_width = csr_data_width
