@@ -149,6 +149,8 @@ class _RtioSysCRG(Module, AutoCSR):
 
         self.submodules += AsyncResetSynchronizerBUFG(self.cd_sys, ~mmcm_locked)
 
+        platform.add_false_path_constraints(self.cd_sys.clk, self.clk125_buf, clk125)
+
 
 class BaseSoC(SoCSDRAM):
     def __init__(self, sdram_controller_type="minicon", hw_rev="v1.1", clk_freq=None, **kwargs):
